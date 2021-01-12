@@ -1,4 +1,4 @@
-const BASE_URL=process.env.NODE_ENV=="development"?`http://localhost:4000`:`https://aspiring-coders-backend.herokuapp.com/`;
+const BASE_URL=process.env.NODE_ENV=="development"?`http://localhost:4000`:`https://aspiring-coders-backend.herokuapp.com`;
 const URL_SUFFIX=`/api/coders`
 export const API_URL=`${BASE_URL}${URL_SUFFIX}`
 export const EXT_API_URL_BASE=`https://competitive-coding-api.herokuapp.com/api/codechef/`;
