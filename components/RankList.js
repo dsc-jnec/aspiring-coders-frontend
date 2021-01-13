@@ -38,7 +38,7 @@ export const RankList = ({coderData}) => {
     const renderTableData=()=>{
        return tableData.map((coder,index)=>{
             return(
-                <tr key={coder?.user_details?.username}>
+                <tr key={index}>
                     <td>
                         {index+1}
                     </td>

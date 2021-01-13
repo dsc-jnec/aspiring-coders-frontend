@@ -19,8 +19,8 @@ const NavLink = styled.span`
 color:rgb(255, 130, 0);
 cursor: pointer;
 `;
-function Home({coderData}) {
-
+function Home({coderData,error}) {
+console.log(coderData);
   return (
     <PageWrapper>
       <NavBar />
@@ -42,8 +42,11 @@ function Home({coderData}) {
         <FullScreenFlex>
         <ContentFlex>
             <Heading>Look at our Rank List</Heading>
-            <SubHeading>Wow! These are some amazing Coders!</SubHeading>
-            <RankList coderData={coderData} />
+            {error?(<>
+            <SubHeading>HMMMMMM Looks like our server is sleepin.....</SubHeading>
+            <ImageWrapper src={'/sleepykate.gif'}/>
+            </>):(<><SubHeading>Wow! These are some amazing Coders!</SubHeading>
+            <RankList coderData={coderData} /></>)}
           </ContentFlex>
         </FullScreenFlex>
         <FullScreenFlex>
@@ -57,13 +60,18 @@ function Home({coderData}) {
   )
 }
 Home.getInitialProps= async(ctx) =>{
-  const res= await axios.get(API_URL);
-  const coderData=[];
-  for(const coder of res.data){
-    const profile=await axios.get(`${EXT_API_URL_BASE}${coder.codechefId}`)
-    coderData.push(profile.data)
+  try {
+    const res= await axios.get(API_URL).catch(()=>{return {error:true}});
+    const coderData=[];
+    for(const coder of res.data){
+      const profile=await axios.get(`${EXT_API_URL_BASE}${coder.codechefId}`).catch(()=>{return {error:true}})
+      coderData.push(profile.data)
+    }
+      return {coderData:coderData}
+  } catch (error) {
+    return {error:true}
   }
-    return {coderData:coderData}
+
 
 }
 
