@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Head from 'next/head'
 import {useEffect} from 'react'
 import { useRouter } from 'next/router'
 const PageWrapper=styled.div`
@@ -16,7 +17,11 @@ useEffect(() => {
 }, [])
   return (
     <PageWrapper>
-        Wow
+            <Head>
+        <title>OHHH MAHHH GOHHHH</title>
+        <link rel="icon" href="/icon.png" />
+      </Head>
+        {" "}
       </PageWrapper>
   )
 }

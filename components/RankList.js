@@ -6,6 +6,11 @@ const RankTable=styled.table`
     border-spacing: 1rem;
     border-color: grey;
     font-size:1.2rem;
+    @media only screen and (max-width: 768px) {
+        border-spacing: 0.5rem;
+        width: unset;
+        font-size:0.8rem;
+}
 
 tr{
     border:1px solid white;
@@ -17,6 +22,9 @@ th{
 td{
     text-align:center;
     padding:0.6rem;
+    @media only screen and (max-width: 768px) {
+        padding:0.3rem;
+}
     a{
         color:rgb(255, 130, 0)
     }
@@ -28,6 +36,10 @@ width:80%;
 background-color:rgba(255,255,255,0.04);
 border-radius:12px;
 padding:1rem;
+@media only screen and (max-width: 768px) {
+        padding:0.5rem;
+        width:100%;
+}
 `;
 export const RankList = ({coderData}) => {
     const [tableData, settableData] = useState([])

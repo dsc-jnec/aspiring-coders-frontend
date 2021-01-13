@@ -26,7 +26,7 @@ console.log(coderData);
       <NavBar />
       <Head>
         <title>Aspiring Coders! - DSC JNEC</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" />
       </Head>
 
       <main>
@@ -59,17 +59,19 @@ console.log(coderData);
     </PageWrapper>
   )
 }
-Home.getInitialProps= async(ctx) =>{
+export async function getStaticProps(){
   try {
     const res= await axios.get(API_URL).catch(()=>{return {error:true}});
     const coderData=[];
     for(const coder of res.data){
-      const profile=await axios.get(`${EXT_API_URL_BASE}${coder.codechefId}`).catch(()=>{return {error:true}})
+      const profile= await axios.get(`${EXT_API_URL_BASE}${coder.codechefId}`).catch(()=>{return {props:{error:true}}})
       coderData.push(profile.data)
     }
-      return {coderData:coderData}
+      return {props:{coderData:coderData}, revalidate: 1000}
   } catch (error) {
-    return {error:true}
+    return {
+      props:{error:true}
+    }
   }
 
 

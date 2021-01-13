@@ -29,6 +29,10 @@ display:flex;
 flex-direction:column;
 gap:32px;
 margin:3rem 6rem;
+@media only screen and (max-width: 768px) {
+  margin:1.5rem 3rem;
+  height:unset;
+}
 `;
 const MessageContainer=styled.div`
 color:#f44336;
@@ -40,6 +44,9 @@ border:none;
 font-size:18px;
 padding:1.5rem;
 border-radius:8px;
+@media only screen and (max-width: 768px) {
+  padding:0.75rem;
+    }
 :hover{
 background-color:rgb(255, 130, 0);
 cursor: pointer;
@@ -60,6 +67,7 @@ height:45px;
   &:-webkit-autofill:active {
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out,font-size 9999s ease-out";
     -webkit-transition-delay: 9999s;
+
   }`;
 function Register(props) {
     const router = useRouter()
@@ -107,8 +115,8 @@ const submitVals=async (param)=>{
     <PageWrapper>
       <NavBar />
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Come Join the Byte Side!</title>
+        <link rel="icon" href="/icon.png" />
       </Head>
 
       <main>
